@@ -79,7 +79,7 @@ text: desc,
 contextInfo: {
 externalAdReply: {
 title: "RAVINDU-MD",
-thumbnailUrl: "https://telegra.ph/file/e069027c2178e2c7475c9.jpg",
+thumbnailUrl: "https://i.ibb.co/kV09yDBR/5813.jpg",
 sourceUrl: "https://whatsapp.com/channel/0029VadExMQHwXb9GtsC1A24",
 mediaType: 1,
 renderLargerThumbnail: true
@@ -94,8 +94,8 @@ renderLargerThumbnail: true
 text: desc,
 contextInfo: {
 externalAdReply: {
-title: "MADUSANKA-MD",
-thumbnailUrl: "https://telegra.ph/file/e069027c2178e2c7475c9.jpg",
+title: "RAVINDU-MD",
+thumbnailUrl: "https://i.ibb.co/kV09yDBR/5813.jpg",
 sourceUrl: "https://whatsapp.com/channel/0029VadExMQHwXb9GtsC1A24",
 mediaType: 2,
 renderLargerThumbnail: true,
