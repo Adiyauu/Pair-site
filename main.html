@@ -36,6 +36,24 @@
       100% { transform: rotate(360deg); }
     }
 
+    @keyframes buttonPulse {
+      0% {
+        box-shadow: 0 0 10px #ff4444, 0 0 20px #ff4444;
+      }
+      50% {
+        box-shadow: 0 0 20px #ff6666, 0 0 30px #ff6666;
+      }
+      100% {
+        box-shadow: 0 0 10px #ff4444, 0 0 20px #ff4444;
+      }
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -140,17 +158,26 @@
       font-size: 18px;
       font-weight: bold;
       color: white;
-      background: linear-gradient(45deg, #ff4444, #ff2222, #cc0000);
+      background: linear-gradient(270deg, #ff4444, #cc0000, #ff2222);
+      background-size: 600% 600%;
       border: 2px solid transparent;
       border-radius: 15px;
-      box-shadow: 0 0 10px #ff6666;
-      animation: glowBorder 3s ease-in-out infinite;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
+      animation: gradientFlow 5s ease infinite, buttonPulse 2.5s ease-in-out infinite;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .button:hover {
+      transform: scale(1.06);
+    }
+
+    .light-mode .button {
+      background: linear-gradient(270deg, #ffdddd, #ffcccc, #ffeeee);
+      color: #660000;
+    }
+
+    .light-mode .button:hover {
       transform: scale(1.06);
     }
 
@@ -160,7 +187,6 @@
       color: #ccc;
     }
 
-    /* Toggle Button */
     .theme-toggle {
       position: fixed;
       top: 15px;
@@ -187,6 +213,7 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
   </style>
+
   <script>
     window.onload = async () => {
       let percent = 1;
@@ -225,10 +252,8 @@
   </script>
 </head>
 <body>
-  <!-- Theme Toggle Button -->
   <button class="theme-toggle" onclick="toggleTheme()">🌓 Mode</button>
 
-  <!-- Loader -->
   <div id="loader-wrapper">
     <div class="circle-loader"></div>
     <div id="loader-text">Loading... 1%</div>
@@ -236,21 +261,18 @@
 
   <h1>RAVINDU MD WHATSAPP BOT</h1>
 
-  <!-- Info Section (3D + Stylish Font) -->
   <div class="info">
     <p id="ip">IP: Loading...</p>
     <p id="battery">Battery: ...</p>
     <p id="time">Time: Loading...</p>
   </div>
 
-  <!-- Weather Info -->
   <div class="weather">
     <h2>Colombo, Sri Lanka</h2>
     <p>28°C</p>
     <p>Partly Cloudy</p>
   </div>
 
-  <!-- Buttons -->
   <a href="/pair" class="button">PAIR CODE</a>
   <a href="/qr" class="button">QR CODE</a>
   <a href="https://github.com/ravindu/md" class="button">BOT FORK</a>
