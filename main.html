@@ -6,6 +6,7 @@
   <title>RAVINDU MD WEB</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
+    /* ----- Animations & General Styles ----- */
     @keyframes backgroundShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -149,6 +150,8 @@
       display: inline-block;
       margin: 20px 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      width: 80%;
+      max-width: 600px;
     }
 
     .button {
@@ -244,10 +247,34 @@
       } else {
         document.getElementById("battery").textContent = "Battery info not available";
       }
+
+      renderComments();
     };
 
     function toggleTheme() {
       document.body.classList.toggle('light-mode');
+    }
+
+    function saveComment(comment) {
+      let comments = JSON.parse(localStorage.getItem("comments")) || [];
+      comments.push(comment);
+      localStorage.setItem("comments", JSON.stringify(comments));
+    }
+
+    function renderComments() {
+      const commentsSection = document.getElementById("comments-section");
+      commentsSection.innerHTML = "";
+      let comments = JSON.parse(localStorage.getItem("comments")) || [];
+      comments.forEach(text => {
+        const p = document.createElement("p");
+        p.textContent = text;
+        p.style.padding = "10px";
+        p.style.background = "rgba(255, 102, 102, 0.1)";
+        p.style.border = "1px solid #ff6666";
+        p.style.borderRadius = "10px";
+        p.style.marginBottom = "10px";
+        commentsSection.appendChild(p);
+      });
     }
   </script>
 </head>
@@ -279,8 +306,33 @@
   <a href="https://github.com/ravindu/md" class="button">BOT GITHUB</a>
   <a href="https://wa.me/94763079634?text=Hi" class="button">CONTACT OWNER</a>
 
+  <!-- 💬 Comment Section -->
+  <div class="weather" style="margin-top: 40px;">
+    <h2>💬 Comment Section</h2>
+    <form id="comment-form">
+      <input type="text" id="comment-input" placeholder="Type your comment..." style="padding:10px; width: 80%; border-radius: 10px; border: none; margin-bottom: 10px;" />
+      <button type="submit" class="button" style="padding: 10px 20px;">Submit</button>
+    </form>
+    <div id="comments-section"></div>
+  </div>
+
   <div class="footer">
     © 2025 RAVINDU MD | Made for Ravindu Akash
   </div>
+
+  <script>
+    const form = document.getElementById("comment-form");
+    const input = document.getElementById("comment-input");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const comment = input.value.trim();
+      if (comment) {
+        saveComment(comment);
+        renderComments();
+        input.value = "";
+      }
+    });
+  </script>
 </body>
 </html>
